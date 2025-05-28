@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>eGadgets - Shop Smart</title>
+    <link rel="stylesheet" href="styles.css">
+    <script defer src="script.js"></script>
+</head>
+<body>
+
+    
+    <header>
+        <div class="logo">ZapBuy</div>
+        <!-- From Uiverse.io by akshat-patel28 --> 
+        <div class="button-container">
+            <button class="button">
+                <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 1024 1024" stroke-width="0" fill="currentColor" stroke="currentColor" class="icon">
+                    <path d="M946.5 505L560.1 118.8l-25.9-25.9a31.5 31.5 0 0 0-44.4 0L77.5 505a63.9 63.9 0 0 0-18.8 46c.4 35.2 29.7 63.3 64.9 63.3h42.5V940h691.8V614.3h43.4c17.1 0 33.2-6.7 45.3-18.8a63.6 63.6 0 0 0 18.7-45.3c0-17-6.7-33.1-18.8-45.2zM568 868H456V664h112v204zm217.9-325.7V868H632V640c0-22.1-17.9-40-40-40H432c-22.1 0-40 17.9-40 40v228H238.1V542.3h-96l370-369.7 23.1 23.1L882 542.3h-96.1z"></path>
+                </svg>
+            </button>
+            <button class="button" onclick="window.location.href='wishlist.html'">
+                <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" stroke-width="0" fill="currentColor" stroke="currentColor" class="icon">
+                    <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"></path>
+                </svg>
+            </button>
+            <button class="button" onclick="window.location.href='login.html'">
+                <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" stroke-width="0" fill="currentColor" stroke="currentColor" class="icon">
+                    <path d="M12 2.5a5.5 5.5 0 0 1 3.096 10.047 9.005 9.005 0 0 1 5.9 8.181.75.75 0 1 1-1.499.044 7.5 7.5 0 0 0-14.993 0 .75.75 0 0 1-1.5-.045 9.005 9.005 0 0 1 5.9-8.18A5.5 5.5 0 0 1 12 2.5ZM8 8a4 4 0 1 0 8 0 4 4 0 0 0-8 0Z"></path>
+                </svg>
+            </button>
+
+            <button class="button" onclick="window.location.href='cart.html'">
+                <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" stroke-linejoin="round" stroke-linecap="round" viewBox="0 0 24 24" stroke-width="2" fill="none" stroke="currentColor" class="icon">
+                    <circle r="1" cy="21" cx="9"></circle>
+                    <circle r="1" cy="21" cx="20"></circle>
+                    <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                </svg>
+            </button>
+
+            <button class="button" onclick="window.location.href='register.html'">
+                <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" stroke-width="0" fill="currentColor" stroke="currentColor" class="icon">
+                    <path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8 8 0 0 1-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z"></path>
+                </svg>
+            </button>
+        </div>
+        <div class="search-bar">
+            <input type="text" id="search" placeholder="Search gadgets..." oninput="searchProducts()">
+            <button onclick="searchProducts()">🔍</button>
+        </div>
+    </header>
+
+  
+
+
+    <!-- Slider -->
+    <section class="slider">
+        <div class="slider-container">
+            <div class="slide">
+                <img src="images/D223161372_Update_DesktopHeroTemplate_3000x1200_ref._CB546633361_.jpg" alt="Slide 1">
+            </div>
+            <div class="slide">
+                <img src="images/Screenshot 2025-03-29 202020.png" alt="Slide 2">
+            </div>
+            <div class="slide">
+                <img src="images/nothing3abanner.jpg" alt="Slide 3">
+            </div>
+            <div class="slide">
+                <img src="assets/slider/slide4.jpg" alt="Slide 4">
+            </div>
+            <div class="slide">
+                <img src="assets/slider/slide5.jpg" alt="Slide 5">
+            </div>
+        </div>
+        <button class="prev" onclick="moveSlide(-1)">&#10094;</button>
+        <button class="next" onclick="moveSlide(1)">&#10095;</button>
+    </section>
+
+    <!-- Categories -->
+    <section class="categories">
+        <h2>Shop by Categories</h2>
+        <div class="category-list">
+             <div class="category-container">
+                <div class="category">
+                    <img src="images/laptop.jpg" alt="Laptops">
+                </div>
+                <p>Laptops</p>
+            </div>
+            <div class="category-container">
+                <div class="category">
+                    <img src="images/camera.webp" alt="Camera">
+                </div>
+                <p>Camera</p>
+            </div>
+            <div class="category-container">
+                <div class="category">
+                    <img src="images/PHONE.jpg" alt="Mobile">
+                </div>
+                <p>Mobile</p>
+            </div>
+            <div class="category-container">
+                <div class="category">
+                    <img src="images/smartwatch.webp" alt="Smart Watch">
+                </div>
+                <p>Smart Watch</p>
+            </div>
+            <div class="category-container">
+                <div class="category">
+                    <img src="images/speaker.jpg" alt="Speakers">
+                </div>
+                <p>Speakers</p>
+            </div>
+            <div class="category-container">
+                <div class="category">
+                    <img src="images/headphones.jpg" alt="Headset">
+                </div>
+                <p>Headset</p>
+            </div>
+            <div class="category-container">
+                <div class="category">
+                    <img src="images/maccs.webp" alt="Mobile Accessories">
+                </div>
+                <p>Mobile Accessories</p>
+            </div>
+            <div class="category-container">
+                <div class="category">
+                    <img src="printer.webp" alt="Computer Peripherals">
+                </div>
+                <p>Computer Peripherals</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Product Listings -->
+    <section class="products" id="add-to-cart-section">
+        <h2>Popular Picks</h2>
+        <div id="product-list" class="product-list"></div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 eGadgets. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        // Fetch and display products from the backend
+        async function fetchProducts() {
+            try {
+                const response = await fetch('/api/products?page=1'); // Fetch products from the backend
+                const data = await response.json();
+                const productList = document.getElementById('product-list');
+                productList.innerHTML = ''; // Clear existing products
+
+                if (data.products.length === 0) {
+                    productList.innerHTML = '<p>No products available.</p>';
+                    return;
+                }
+
+                data.products.forEach(product => {
+                    const productDiv = document.createElement('div');
+                    productDiv.classList.add('product');
+                    productDiv.innerHTML = `
+                        <a href="product.html?id=${product.id}">
+                            <img src="${product.image}" alt="${product.name}" class="product-image">
+                            <h3>${product.name}</h3>
+                            <p>Price: $${product.price}</p>
+                        </a>
+                    `;
+                    productList.appendChild(productDiv);
+                });
+            } catch (error) {
+                console.error('Error fetching products:', error);
+            }
+        }
+
+        // Fetch products on page load
+        document.addEventListener('DOMContentLoaded', fetchProducts);
+
+        function scrollToAddToCart() {
+            const addToCartSection = document.getElementById("add-to-cart-section"); // Use an ID for precise targeting
+            if (addToCartSection) {
+                addToCartSection.scrollIntoView({ behavior: "smooth" });
+            } else {
+                console.error("Add to Cart section not found.");
+            }
+        }
+
+        function handleProfileNavigation() {
+            const loggedInUser = localStorage.getItem("loggedInUser");
+            if (loggedInUser) {
+                // If the user is already logged in, navigate to the profile page
+                window.location.href = "profile.html";
+            } else {
+                // If the user is not logged in, navigate to the login page
+                window.location.href = "login.html";
+            }
+        }
+    </script>
+
+</body>
+</html>

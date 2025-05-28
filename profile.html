@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=900px, initial-scale=1.0">
+    <title>Profile</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .profile-container {
+            max-width: 900px;
+            margin: 50px auto;
+            text-align: center;
+        }
+
+        .profile-header {
+            margin-bottom: 30px;
+        }
+
+        .profile-header h2 {
+            font-size: 28px;
+            color: #333;
+        }
+
+        .profile-boxes {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .profile-box {
+            width: 200px;
+            height: 200px;
+            background-color: #f8f9fa;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .profile-box:hover {
+            transform: scale(1.1);
+        }
+
+        .profile-box i {
+            font-size: 50px;
+            color: #007bff;
+            margin-bottom: 10px;
+        }
+
+        .profile-box p {
+            font-size: 18px;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <div class="profile-container">
+        <div class="profile-header">
+            <h2>Welcome to Your Profile</h2>
+        </div>
+        <div class="profile-boxes">
+            <div class="profile-box" onclick="alert('Orders clicked!')">
+                <i>📦</i>
+                <p>Orders</p>
+            </div>
+            <div class="profile-box" onclick="alert('Coupons clicked!')">
+                <i>🎟️</i>
+                <p>Coupons</p>
+            </div>
+            <div class="profile-box" onclick="alert('Wishlist clicked!')">
+                <i>❤️</i>
+                <p>Wishlist</p>
+            </div>
+            <div class="profile-box" onclick="alert('Help Care clicked!')">
+                <i>📞</i>
+                <p>Help Care</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

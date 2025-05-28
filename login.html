@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .login-container {
+            max-width: 400px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .login-container h2 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .login-container input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        .login-container button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+
+        .login-container button:hover {
+            background-color: #0056b3;
+        }
+
+        .notification {
+            margin-top: 20px;
+            font-size: 14px;
+            color: green;
+        }
+
+        .register-link {
+            margin-top: 15px;
+            display: block;
+            color: #007bff;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .register-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <h2>Login</h2>
+        <form id="login-form">
+            <input type="text" id="name" placeholder="Enter your name" required>
+            <input type="text" id="phone-number" placeholder="Enter your phone number" required>
+            <input type="password" id="pin" placeholder="Enter your pin" required>
+            <button type="submit">Login</button>
+        </form>
+        <p id="notification" class="notification" style="display: none;">Login successful!</p>
+        <a href="register.html" class="register-link">Don't have an account? Register</a>
+    </div>
+
+    <script>
+        document.getElementById("login-form").addEventListener("submit", async (e) => {
+            e.preventDefault();
+
+            const name = document.getElementById("name").value.trim();
+            const phoneNumber = document.getElementById("phone-number").value.trim();
+            const pin = document.getElementById("pin").value.trim();
+
+            if (!name || !phoneNumber || !pin) {
+                alert("All fields are required.");
+                return;
+            }
+
+            try {
+                const response = await fetch("/api/customers", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({ name, phone_number: phoneNumber, pin }),
+                });
+
+                if (response.ok) {
+                    const result = await response.json();
+                    document.getElementById("notification").style.display = "block";
+                    document.getElementById("notification").textContent = "Login successful!";
+                    document.getElementById("login-form").reset();
+
+                    // Optionally redirect to another page
+                    setTimeout(() => {
+                        window.location.href = "profile.html";
+                    }, 2000);
+                } else {
+                    const error = await response.json();
+                    alert(error.error || "Failed to login. Please try again.");
+                }
+            } catch (error) {
+                console.error("Error:", error);
+                alert("An error occurred. Please try again.");
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Details</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            background-color: #f9f9f9;
+            font-family: 'Arial', sans-serif;
+        }
+
+        .product-details-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            padding: 40px;
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            margin: 20px auto;
+            max-width: 1200px;
+        }
+
+        .product-images {
+            flex: 1;
+            text-align: center;
+        }
+
+        .product-images img {
+            max-width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .product-info {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+        }
+
+        .product-info h1 {
+            font-size: 28px;
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+        .product-info p {
+            font-size: 18px;
+            margin-bottom: 20px;
+            color: #555;
+        }
+
+        .product-info .price {
+            font-size: 26px;
+            font-weight: bold;
+            color: #ff5722;
+            margin-bottom: 20px;
+        }
+
+        .product-info .actions button {
+            background-color: #007bff;
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-right: 10px;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+
+        .product-info .actions button:hover {
+            background-color: #0056b3;
+        }
+
+        .description, .specifications {
+            margin-top: 40px;
+            padding: 30px;
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            max-width: 1200px;
+            margin: 20px auto;
+        }
+
+        .description h2, .specifications h2 {
+            font-size: 24px;
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+        .description p, .specifications ul {
+            font-size: 16px;
+            color: #555;
+            line-height: 1.6;
+        }
+
+        .specifications ul {
+            list-style-type: disc;
+            padding-left: 20px;
+        }
+
+        .specifications ul li {
+            margin-bottom: 10px;
+        }
+    </style>
+    <script defer src="product.js"></script>
+</head>
+<body>
+    <header>
+        <div class="logo">ZapBuy</div>
+    </header>
+
+    <main>
+        <!-- Product Details Section -->
+        <section class="product-details-container">
+            <div class="product-images">
+                <img id="main-image" src="" alt="Product Image">
+            </div>
+            <div class="product-info">
+                <h1 id="product-name">Product Name</h1>
+                <p class="price" id="product-price">$0.00</p>
+                <div class="actions">
+                    <button id="add-to-cart" onclick="addToCart()">Add to Cart</button>
+                    <button id="add-to-wishlist" onclick="addToWishlist()">Add to Wishlist</button>
+                    <button id="buy-now" onclick="proceedToBuy()">Buy It Now</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Description Section -->
+        <section class="description">
+            <h2>Description</h2>
+            <p id="product-description">Loading...</p>
+        </section>
+
+        <!-- Specifications Section -->
+        <section class="specifications">
+            <h2>Specifications</h2>
+            <ul id="product-specifications">
+                <li>Loading...</li>
+            </ul>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 eGadgets. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        function addToCart() {
+            const product = {
+                id: new URLSearchParams(window.location.search).get("id"),
+                name: document.getElementById("product-name").textContent,
+                price: document.getElementById("product-price").textContent,
+                image: document.getElementById("main-image").src
+            };
+
+            let cart = JSON.parse(localStorage.getItem("cart")) || [];
+            cart.push(product);
+            localStorage.setItem("cart", JSON.stringify(cart));
+            alert("Product added to cart!");
+        }
+
+        function addToWishlist() {
+            const product = {
+                id: new URLSearchParams(window.location.search).get("id"),
+                name: document.getElementById("product-name").textContent,
+                price: document.getElementById("product-price").textContent,
+                image: document.getElementById("main-image").src
+            };
+
+            let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
+            const exists = wishlist.find(item => item.id === product.id);
+
+            if (!exists) {
+                wishlist.push(product);
+                localStorage.setItem("wishlist", JSON.stringify(wishlist));
+                alert(`${product.name} added to wishlist!`);
+            } else {
+                alert(`${product.name} is already in your wishlist!`);
+            }
+        }
+
+        function proceedToBuy() {
+            const productId = new URLSearchParams(window.location.search).get("id");
+            window.location.href = `/buying.html?id=${productId}`;
+        }
+    </script>
+</body>
+</html>
